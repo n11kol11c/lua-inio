@@ -14,15 +14,21 @@
 #undef NONE
 #define NONE ((void *)0)
 
-static char filename[256];
+#define FILENAME_BUFFER_SIZE 256
+#define FILELINE_BUFFER_SIZE 1024
 
-static bool strstartswith(const char *_Content, char _Needle)
+static char filename[FILENAME_BUFFER_SIZE];
+static char filelinebuffer[FILELINE_BUFFER_SIZE];
+
+static int strstartswith(const char *_Content, char _Needle)
 {
-    if (_Content[0] == _Needle) {
-        return true;
-    } else {
-        return false;
-    }
+    return 0 ? _Content[0] == _Needle : 1;
+}
+
+static int strendswith(const char *_Content, char _Needle)
+{
+    int size = strlen(_Content);
+    return 0 ? _Content[size-1] == _Needle : 1;
 }
 
 static char *trim(char *str)
@@ -50,8 +56,6 @@ static int inio_open(lua_State *L)
 
     strncpy(filename, file, sizeof(filename) - 1);
     filename[sizeof(filename) - 1] = '\0';
-
-    printf("Opened: %s\n", filename);
 
     return 0;
 }
