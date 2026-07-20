@@ -2,12 +2,12 @@ local inio_core = require("inio_core")
 
 local inio = {}
 
---- Opens an INI file for reading.
---- Must be called before using `inio.get`.
+--- Opens connection to an INI file for reading.
+--- Must be called before using any other function
 ---@param file string Path to the INI file
 ---@return nil
-function inio.open(file)
-    inio_core.open(file)
+function inio.connect(file)
+    inio_core.connect(file)
 end
 
 --- Returns a value from the loaded INI file.
