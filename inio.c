@@ -14,7 +14,7 @@
 
 static char filename[FILENAME_BUFFER_SIZE];
 
-static int inio_open(lua_State *L)
+static int inio_connect(lua_State *L)
 {
     const char *file = luaL_checkstring(L, 1);
 
@@ -23,7 +23,6 @@ static int inio_open(lua_State *L)
 
     return 0;
 }
-
 
 static int inio_get(lua_State *L)
 {
@@ -105,13 +104,11 @@ static int inio_get(lua_State *L)
     return 1;
 }
 
-
-
 static const luaL_Reg inio_functions[] =
 {
-    {"open", inio_open},
-    {"get",  inio_get},
-    {NULL, NULL}
+    [0] = {"open", inio_connect},
+    [1] = {"get",  inio_get},
+    [2] = {NULL, NULL}
 };
 
 
