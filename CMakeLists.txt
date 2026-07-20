@@ -90,9 +90,9 @@ message(STATUS "Lua library:     ${LUA_LIBRARY}")
 
 # --- Build shared library ---------------------------------------------------
 
-add_library(inio_core SHARED inio.c)
+add_library(inio_core SHARED inio.c modules/str.c)
 
-target_include_directories(inio_core PRIVATE ${LUA_INCLUDE_DIR})
+target_include_directories(inio_core PRIVATE ${LUA_INCLUDE_DIR} ${CMAKE_SOURCE_DIR})
 target_link_libraries(inio_core PRIVATE ${LUA_LIBRARY})
 
 # Remove the "lib" prefix on all platforms so the output is inio_core.so
