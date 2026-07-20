@@ -26,9 +26,9 @@ build = {
    type = "builtin",
    modules = {
       inio_core = {
-         sources = { "inio.c" },
+         sources = { "inio.c", "modules/str.c" },
          libraries = { "lua" },
-         incdirs = { "$(LUA_INCDIR)" },
+         incdirs = { "$(LUA_INCDIR)", "." },
          libdirs = { "$(LUA_LIBDIR)" },
       },
       inio = "inio.lua",
